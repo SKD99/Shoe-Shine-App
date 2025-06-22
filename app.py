@@ -134,15 +134,20 @@ def get_profile():
     return jsonify({"error": "User not found"}), 404
 
 # === PRODUCTS & STATIC ===
-@app.route("/api/products")
-def get_products():
+@app.route("/api/products/<int:product_id>")
+def get_product(product_id):
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, name, price, category, image, link FROM products")
-    rows = cursor.fetchall()
+    cursor.execute("SELECT id, name, price, category, image, link FROM products WHERE id=?", (product_id,))
+    row = cursor.fetchone()
     conn.close()
-    products = [{"id": r[0], "name": r[1], "price": r[2], "category": r[3], "image": r[4], "link": r[5]} for r in rows]
-    return jsonify(products)
+    if row:
+        return jsonify({
+            "id": row[0], "name": row[1], "price": row[2],
+            "category": row[3], "image": row[4], "link": row[5]
+        })
+    return jsonify({"error": "Not found"}), 404
+
 
 @app.route("/static/<path:filename>")
 def serve_static(filename):
