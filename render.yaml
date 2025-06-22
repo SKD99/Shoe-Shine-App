@@ -1,0 +1,10 @@
+# render.yaml
+services:
+  - type: web
+    name: shoe-shine-backend
+    env: python
+    region: oregon
+    buildCommand: ""
+    startCommand: python app.py
+    plan: free
+    autoDeploy: true
