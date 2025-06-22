@@ -1,0 +1,17 @@
+-- Run in DB browser or script
+CREATE TABLE products (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    price REAL,
+    category TEXT,
+    image TEXT,
+    link TEXT
+);
+
+INSERT INTO products (name, price, category, image, link) VALUES
+("Nike Pegasus", 120.99, "sneaker", "Nike_Pegasus.jpeg", "https://www.nike.com"),
+("Adidas UltraBoost", 130.99, "sports", "Adidas_UltraBoost.jpeg", "https://www.adidas.com"),
+("Puma Rider", 110.50, "joggers", "Puma_Rider.jpeg", "https://www.puma.com"),
+("Reebok Zig", 100.00, "sports", "Reebok_Zig.jpeg", "https://www.reebok.com"),
+("Sketchers Walk", 95.99, "loafer", "Sketchers_Walk.jpeg", "https://www.skechers.com"),
+("Converse AllStar", 89.99, "sneaker", "Converse_AllStar.jpeg", "https://www.converse.com");
